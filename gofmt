@@ -1,0 +1,27 @@
+# bash completion for gofmt                                -*- shell-script -*-
+
+_gofmt()
+{
+    local cur prev words cword split
+    _init_completion -s || return
+
+    case $prev in
+        -r)
+            ;;
+        -cpuprofile)
+            _filedir
+            ;;
+        *)
+            if [[ -n $cur ]] && [[ $cur == -* ]]; then
+                COMPREPLY=( $(compgen -W '$(_parse_help "$1")' -- "$cur") )
+                return
+            fi
+
+            _filedir "@(go)"
+            ;;
+    esac
+    return
+} &&
+complete -F _gofmt gofmt
+
+# ex: filetype=sh
