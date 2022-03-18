@@ -1,3 +1,5 @@
+# Note: I will no longer maintain this.
+
 # golang-bash-completion
 A bash-completion shell script for golang package
 
